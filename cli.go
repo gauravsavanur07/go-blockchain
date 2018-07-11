@@ -24,6 +24,7 @@ func (cli *CLI) printUsage() {
 	fmt.Println("  addblock -data BLOCK_DATA - add a block to the blockchain")
 	fmt.Println("  printchain - print all the blocks of the blockchain")
 }
+	fmt.Println("  startnode -node-id NODE_ID - Start a node with specified ID")
 
 func (cli *CLI) validateArgs() {
 	if len(os.Args) < 2 {
@@ -59,6 +60,9 @@ func (cli *CLI) printChain() {
 // Run parses command line arguments and processes commands
 func (cli *CLI) Run() {
 	cli.validateArgs()
+	reindexUTXOCmd := flag.NewFlagSet("reindexutxo", flag.ExitOnError)
+
+ 	sendCmd := flag.NewFlagSet("send", flag.ExitOnError)	 	sendCmd := flag.NewFlagSet("send", flag.ExitOnError)
 
 	addBlockCmd := flag.NewFlagSet("addblock", flag.ExitOnError)
 	printChainCmd := flag.NewFlagSet("printchain", flag.ExitOnError)
